@@ -1,7 +1,9 @@
+$min-ht: 100vh;
+
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: $min-ht;
 }
 
 main {
