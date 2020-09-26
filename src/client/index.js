@@ -9,3 +9,5 @@ import "./styles/header.scss";
 console.log(handleSubmit);
 
 alert("Yellow");
+
+export { handleSubmit, checkForName };
