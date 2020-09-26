@@ -4,6 +4,11 @@ var HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   mode: "production",
   entry: "./src/client/index.js",
+  output: {
+    library: "Client",
+    libraryTarget: "var",
+    auxiliaryComment: "Test Comment",
+  },
   module: {
     rules: [
       {
