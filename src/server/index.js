@@ -1,8 +1,10 @@
 var path = require("path");
 const express = require("express");
 const mockAPIResponse = require("./mockAPI.js");
-
+require("dotenv").config();
+const KEY = process.env.API_KEY;
 const app = express();
+const fetch = require("node-fetch");
 
 /* Middleware*/
 const cors = require("cors");
@@ -25,9 +27,16 @@ app.get("/", function (req, res) {
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
+  console.log(process.env.API_KEY);
   console.log("Example app listening on port 8081!");
 });
 
-app.get("/test", function (req, res) {
-  res.send(mockAPIResponse);
+// using route parameters
+app.get("/get/:text", async (req, res) => {
+  const text = req.params.text;
+  console.log(text);
+  const api_url = `https://api.meaningcloud.com/sentiment-2.1?key=${KEY}&of=json&txt=${text}&lang=en`;
+  const fetchResponse = await fetch(api_url);
+  const json = await fetchResponse.json();
+  res.json(json);
 });
