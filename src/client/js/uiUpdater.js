@@ -1,4 +1,4 @@
-function checkForName(res, flag) {
+function updateUI(res, flag) {
   let results = document.getElementById("results");
   if (flag) {
     results.innerHTML = `
@@ -9,4 +9,4 @@ function checkForName(res, flag) {
     results.innerHTML = `${res} : Just numbers | empty fields are not valid`;
 }
 
-export { checkForName };
+export { updateUI };

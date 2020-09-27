@@ -1,5 +1,5 @@
 import { handleSubmit } from "./js/formHandler";
-import { checkForName } from "./js/nameChecker";
+import { updateUI } from "./js/uiUpdater";
 import { isValid } from "./js/formValidator";
 import "./styles/resets.scss";
 import "./styles/base.scss";
@@ -11,4 +11,4 @@ console.log(handleSubmit);
 
 alert("Yellow");
 
-export { handleSubmit, checkForName, isValid };
+export { handleSubmit, updateUI, isValid };

@@ -1,9 +1,16 @@
 const path = require("path");
 const webpack = require("webpack");
 var HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
+
 module.exports = {
   mode: "production",
   entry: "./src/client/index.js",
+  optimization: {
+    minimizer: [new TerserPlugin({}), new OptimizeCSSAssetsPlugin({})],
+  },
   output: {
     library: "Client",
     libraryTarget: "var",
@@ -23,14 +30,7 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: [
-          // Creates `style` nodes from JS strings
-          "style-loader",
-          // Translates CSS into CommonJS
-          "css-loader",
-          // Compiles Sass to CSS
-          "sass-loader",
-        ],
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
@@ -39,5 +39,6 @@ module.exports = {
       template: "./src/client/views/index.html",
       filename: "./index.html",
     }),
+    new MiniCssExtractPlugin({ filename: "[name].css" }),
   ],
 };

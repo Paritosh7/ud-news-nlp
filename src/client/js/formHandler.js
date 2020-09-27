@@ -11,9 +11,9 @@ function handleSubmit(event) {
       .then((res) => res.json())
       .then(function (res) {
         console.log(res);
-        Client.checkForName(res, true);
+        Client.updateUI(res, true);
       });
-  } else Client.checkForName("Please enter a valid input field", false);
+  } else Client.updateUI("Please enter a valid input field", false);
 }
 
 export { handleSubmit };
